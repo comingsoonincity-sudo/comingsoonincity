@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ComingSoonInCity — What's Opening Next</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <div class="logo">
+      <div class="mark">C</div>
+      <div class="wordmark">Coming<span>Soon</span>InCity</div>
+      <div class="city-badge">Andhra Pradesh</div>
+    </div>
+    <nav class="links">
+      <a href="#board">The Board</a>
+      <a href="#notify">Get Notified</a>
+      <a href="#list">List a Project</a>
+    </nav>
+    <a href="#notify" class="btn btn-primary">Get Notified</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="permit-tag">Andhra Pradesh Permit Board — Updated Weekly</div>
+    <h1 class="hero-headline display">
+      Your city's next<br> chapter, <span class="accent">posted<br>here first.</span>
+    </h1>
+    <p class="hero-sub">Every real estate development, storefront, and service launch worth knowing about across Visakhapatnam, Vizianagaram &amp; Srikakulam — before the ribbon gets cut. Get on the list, get in early.</p>
+    <div class="hero-cta">
+      <a href="#board" class="btn btn-primary">See What's Coming</a>
+      <a href="#list" class="btn btn-outline">List Your Project</a>
+    </div>
+
+    <div class="hero-stats">
+      <div><div class="num">11</div><div class="lbl">Projects Posted</div></div>
+      <div><div class="num">7</div><div class="lbl">Categories</div></div>
+      <div><div class="num">3</div><div class="lbl">Cities Live</div></div>
+    </div>
+  </div>
+
+  <svg class="skyline" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="40" y="180" width="55" height="220" fill="#16283c"/>
+    <rect x="105" y="120" width="45" height="280" fill="#1c3049"/>
+    <rect x="160" y="210" width="60" height="190" fill="#16283c"/>
+    <rect x="230" y="90" width="50" height="310" fill="#1c3049"/>
+    <rect x="290" y="160" width="42" height="240" fill="#16283c"/>
+    <rect x="340" y="60" width="55" height="340" fill="#22405c"/>
+    <rect x="405" y="200" width="48" height="200" fill="#16283c"/>
+    <g fill="#F2C14E" opacity="0.55">
+      <rect x="52" y="200" width="8" height="8"/><rect x="70" y="230" width="8" height="8"/>
+      <rect x="118" y="150" width="8" height="8"/><rect x="118" y="190" width="8" height="8"/>
+      <rect x="245" y="130" width="8" height="8"/><rect x="245" y="170" width="8" height="8"/>
+      <rect x="355" y="100" width="8" height="8"/><rect x="355" y="140" width="8" height="8"/><rect x="355" y="180" width="8" height="8"/>
+      <rect x="418" y="230" width="8" height="8"/>
+    </g>
+  </svg>
+</section>
+
+<div class="city-bar">
+  <span class="label">City</span>
+  <button class="city-chip active" data-city="all">All Cities</button>
+  <button class="city-chip" data-city="visakhapatnam">Visakhapatnam</button>
+  <button class="city-chip" data-city="vizianagaram">Vizianagaram</button>
+  <button class="city-chip" data-city="srikakulam">Srikakulam</button>
+  <button class="city-chip disabled" disabled>+ More Soon</button>
+</div>
+
+<div class="filter-bar" id="board">
+  <span class="label">Filter</span>
+  <button class="chip active" data-filter="all">All</button>
+  <button class="chip" data-filter="real-estate">Real Estate</button>
+  <button class="chip" data-filter="ecommerce">Ecommerce</button>
+  <button class="chip" data-filter="loans">Loans &amp; Finance</button>
+  <button class="chip" data-filter="travel">Travel</button>
+  <button class="chip" data-filter="kitchen">Food &amp; Kitchen</button>
+  <button class="chip" data-filter="furniture">Furniture &amp; Interiors</button>
+  <button class="chip" data-filter="jewellery">Jewellery</button>
+</div>
+
+<div class="board" id="cardGrid">
+
+  <div class="card" data-cat="ecommerce" data-city="visakhapatnam">
+    <div class="tape"></div>
+    <div class="card-top"><span class="cat-tag">Ecommerce</span><span class="stamp">Coming Soon</span></div>
+    <h3>YourWorldComeTrue</h3>
+    <p class="desc">Online store bringing a wide range of everyday products to shoppers across the city.</p>
+    <div class="meta">
+      <span><span class="k">Location:</span> Jagadamba, Visakhapatnam</span>
+      <span><span class="k">Opens:</span> Coming Soon</span>
+    </div>
+    <div class="card-cta"><button class="primary">Notify Me</button><button>Details</button></div>
+  </div>
+
+  <div class="card" data-cat="ecommerce" data-city="visakhapatnam">
+    <div class="tape"></div>
+    <div class="card-top"><span class="cat-tag">Ecommerce</span><span class="stamp online">Online</span></div>
+    <h3>SalesBeez</h3>
+    <p class="desc">Ecommerce venture built to connect local sellers with buyers across Visakhapatnam.</p>
+    <div class="meta">
+      <span><span class="k">Location:</span> Jagadamba, Visakhapatnam</span>
+    </div>
+    <div class="card-cta">
+      <button class="start-btn" data-name="SalesBeez" data-youtube="https://youtube.com/@salesbeez" data-instagram="https://instagram.com/salesbeez" data-wa-join="https://wa.me/9959427831?text=Hi%2C%20I%27d%20like%20to%20connect%20with%20SalesBeez" data-wa-buy="https://wa.me/9347965863?text=Hi%2C%20I%27d%20like%20to%20purchase%20items%20from%20SalesBeez">Start</button>
+    </div>
+  </div>
+
+  <div class="card" data-cat="loans" data-city="visakhapatnam">
+    <div class="tape"></div>
+    <div class="card-top"><span class="cat-tag">Loans &amp; Finance</span><span class="stamp">Coming Soon</span></div>
+    <h3>Happy Pay Loans</h3>
+    <p class="desc">Local loan and finance services designed to make quick, accessible lending easier.</p>
+    <div class="meta">
+      <span><span class="k">Location:</span> Jagadamba, Visakhapatnam</span>
+      <span><span class="k">Opens:</span> Coming Soon</span>
+    </div>
+    <div class="card-cta"><button class="primary">Notify Me</button><button>Details</button></div>
+  </div>
+
+  <div class="card" data-cat="travel" data-city="visakhapatnam">
+    <div class="tape"></div>
+    <div class="card-top"><span class="cat-tag">Travel</span><span class="stamp">Coming Soon</span></div>
+    <h3>Travel Tour Wings</h3>
+    <p class="desc">Travel and tour planning services for trips near and far, booked locally.</p>
+    <div class="meta">
+      <span><span class="k">Location:</span> Jagadamba, Visakhapatnam</span>
+      <span><span class="k">Opens:</span> Coming Soon</span>
+    </div>
+    <div class="card-cta"><button class="primary">Notify Me</button><button>Details</button></div>
+  </div>
+
+  <div class="card" data-cat="kitchen" data-city="visakhapatnam">
+    <div class="tape"></div>
+    <div class="card-top"><span class="cat-tag">Food &amp; Kitchen</span><span class="stamp">Coming Soon</span></div>
+    <h3>Future Fit Kitchen</h3>
+    <p class="desc">A new kitchen concept focused on fresh, health-forward meals for the neighborhood.</p>
+    <div class="meta">
+      <span><span class="k">Location:</span> Jagadamba, Visakhapatnam</span>
+      <span><span class="k">Opens:</span> Coming Soon</span>
+    </div>
+    <div class="card-cta"><button class="primary">Notify Me</button><button>Details</button></div>
+  </div>
+
+  <div class="card" data-cat="furniture" data-city="visakhapatnam">
+    <div class="tape"></div>
+    <div class="card-top"><span class="cat-tag">Furniture &amp; Interiors</span><span class="stamp online">Online</span></div>
+    <h3>Skylimits Furniture &amp; Interiors</h3>
+    <p class="desc">Furniture and interior design solutions for homes and offices.</p>
+    <div class="meta">
+      <span><span class="k">Location:</span> Dondaparthy, Visakhapatnam</span>
+    </div>
+    <div class="card-cta">
+      <button class="start-btn" data-name="Skylimits Furniture &amp; Interiors" data-youtube="https://youtube.com/@skylimitsfurniture" data-instagram="https://instagram.com/skylimitsfurniture" data-wa-join="https://wa.me/9959427831?text=Hi%2C%20I%27d%20like%20to%20connect%20with%20Skylimits%20Furniture" data-wa-buy="https://wa.me/9959427831?text=Hi%2C%20I%27d%20like%20to%20purchase%20items%20from%20Skylimits%20Furniture">Start</button>
+    </div>
+  </div>
+
+  <div class="card" data-cat="furniture" data-city="visakhapatnam">
+    <div class="tape"></div>
+    <div class="card-top"><span class="cat-tag">Furniture &amp; Interiors</span><span class="stamp online">Online</span></div>
+    <h3>Dream Comfort Furniture &amp; Interiors</h3>
+    <p class="desc">Custom furniture and interior fit-outs built around comfort and everyday living.</p>
+    <div class="meta">
+      <span><span class="k">Location:</span> Dondaparthy, Visakhapatnam</span>
+    </div>
+    <div class="card-cta">
+      <button class="start-btn" data-name="Dream Comfort Furniture &amp; Interiors" data-youtube="https://youtube.com/@dreamcomfortfurniture" data-instagram="https://instagram.com/dreamcomfortfurniture" data-wa-join="https://wa.me/9959427831?text=Hi%2C%20I%27d%20like%20to%20connect%20with%20Dream%20Comfort%20Furniture" data-wa-buy="https://wa.me/9959427831?text=Hi%2C%20I%27d%20like%20to%20purchase%20items%20from%20Dream%20Comfort%20Furniture">Start</button>
+    </div>
+  </div>
+
+  <div class="card" data-cat="jewellery" data-city="visakhapatnam">
+    <div class="tape"></div>
+    <div class="card-top"><span class="cat-tag">Jewellery</span><span class="stamp online">Online</span></div>
+    <h3>Rich Jewellery</h3>
+    <p class="desc">A new jewellery destination for the neighborhood, opening its doors soon.</p>
+    <div class="meta">
+      <span><span class="k">Location:</span> Pendurthi, Visakhapatnam</span>
+    </div>
+    <div class="card-cta">
+      <button class="start-btn" data-name="Rich Jewellery" data-youtube="https://youtube.com/@richjewellery" data-instagram="https://instagram.com/richjewellery" data-wa-join="https://wa.me/9959427831?text=Hi%2C%20I%27d%20like%20to%20connect%20with%20Rich%20Jewellery" data-wa-buy="https://wa.me/9959427831?text=Hi%2C%20I%27d%20like%20to%20purchase%20items%20from%20Rich%20Jewellery">Start</button>
+    </div>
+  </div>
+
+  <div class="card" data-cat="real-estate" data-city="visakhapatnam">
+    <div class="tape"></div>
+    <div class="card-top"><span class="cat-tag">Real Estate</span><span class="stamp online">Online</span></div>
+    <h3>Vision Globex Real Estate</h3>
+    <p class="desc">Real estate development and project sales in the Pendurthi area.</p>
+    <div class="meta">
+      <span><span class="k">Location:</span> Pendurthi, Visakhapatnam</span>
+    </div>
+    <div class="card-cta">
+      <button class="start-btn" data-name="Vision Globex Real Estate" data-youtube="https://youtube.com/@visionglobexrealestate" data-instagram="https://instagram.com/visionglobexrealestate" data-wa-join="https://wa.me/9347965863?text=Hi%2C%20I%27d%20like%20to%20connect%20with%20Vision%20Globex%20Real%20Estate" data-wa-buy="https://wa.me/910000000000?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20properties%20from%20Vision%20Globex%20Real%20Estate">Start</button>
+    </div>
+  </div>
+
+  <div class="card" data-cat="real-estate" data-city="srikakulam">
+    <div class="tape"></div>
+    <div class="card-top"><span class="cat-tag">Real Estate</span><span class="stamp online">Online</span></div>
+    <h3>Costa Palms Residency</h3>
+    <p class="desc">Residential real estate project taking shape in Ranastalam.</p>
+    <div class="meta">
+      <span><span class="k">Location:</span> Ranastalam, Srikakulam</span>
+    </div>
+    <div class="card-cta">
+      <button class="start-btn" data-name="Costa Palms Residency" data-youtube="https://youtube.com/@costapalmsresidency" data-instagram="https://instagram.com/costapalmsresidency" data-wa-join="https://wa.me/9347965863?text=Hi%2C%20I%27d%20like%20to%20connect%20with%20Costa%20Palms%20Residency" data-wa-buy="https://wa.me/910000000000?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20properties%20from%20Costa%20Palms%20Residency">Start</button>
+    </div>
+  </div>
+
+  <div class="card" data-cat="real-estate" data-city="vizianagaram">
+    <div class="tape"></div>
+    <div class="card-top"><span class="cat-tag">Real Estate</span><span class="stamp online">Online</span></div>
+    <h3>Royal City Real Estate</h3>
+    <p class="desc">New real estate development bringing fresh residential options to Kothavalasa.</p>
+    <div class="meta">
+      <span><span class="k">Location:</span> Kothavalasa, Vizianagaram</span>
+    </div>
+    <div class="card-cta">
+      <button class="start-btn" data-name="Royal City Real Estate" data-youtube="https://youtube.com/@royalcityrealestate" data-instagram="https://instagram.com/royalcityrealestate" data-wa-join="https://wa.me/9347965863?text=Hi%2C%20I%27d%20like%20to%20connect%20with%20Royal%20City%20Real%20Estate" data-wa-buy="https://wa.me/910000000000?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20properties%20from%20Royal%20City%20Real%20Estate">Start</button>
+    </div>
+  </div>
+
+</div>
+
+<section class="notify" id="notify">
+  <div class="notify-inner">
+    <div class="permit-tag">Stay Ahead</div>
+    <h2 class="display">Never miss<br>an opening.</h2>
+    <p>Pick your categories, we'll flag you the moment a new project posts to the board.</p>
+    <form class="notify-form" id="notifyForm">
+      <input type="email" placeholder="your@email.com" required aria-label="Email address">
+      <button type="submit" class="btn btn-primary">Notify Me</button>
+    </form>
+    <div class="form-success" id="formSuccess">You're on the list — watch your inbox.</div>
+    <div class="notify-note">NO SPAM. UNSUBSCRIBE ANYTIME.</div>
+  </div>
+</section>
+
+<section class="list-project" id="list">
+  <div>
+    <div class="permit-tag">For Businesses</div>
+    <h2 class="display">Got something<br>opening soon?</h2>
+    <p>Get your project on the board. Every listing is placed by hand — send us the details and we'll get you posted in front of locals actively looking for what's next.</p>
+    <a href="#" class="btn btn-primary">Submit Your Project</a>
+  </div>
+  <div class="placard-mini">
+    <div class="tape"></div>
+    <div class="signage">Sample Placard</div>
+    <div class="big">Your Business Here</div>
+    <div class="fine">Location: —— &nbsp;|&nbsp; Opens: ——<br>Permit #: PENDING</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="wordmark">Coming<span>Soon</span>InCity</div>
+    <div class="footer-note">A directory of what's opening next across Visakhapatnam, Vizianagaram &amp; Srikakulam.</div>
+  </div>
+</footer>
+
+<div class="chat-overlay" id="chatOverlay" aria-hidden="true">
+  <div class="chat-modal">
+    <div class="chat-tape"></div>
+    <button class="chat-close" id="chatClose" aria-label="Close">&times;</button>
+    <div class="chat-header">
+      <span class="chat-dot"></span>
+      <span class="signage">Connect Assistant</span>
+    </div>
+    <p class="chat-msg">Ready to connect with <strong id="chatBizName">this business</strong>? Pick where:</p>
+
+    <div class="chat-options" id="chatMainOptions">
+      <a class="chat-btn yt" id="chatYoutube" href="#" target="_blank" rel="noopener">
+        <span class="chat-btn-icon">▶</span> Subscribe on YouTube
+      </a>
+      <a class="chat-btn ig" id="chatInstagram" href="#" target="_blank" rel="noopener">
+        <span class="chat-btn-icon">◎</span> Follow on Instagram
+      </a>
+      <button class="chat-btn wa" id="chatWhatsappBtn">
+        <span class="chat-btn-icon">✆</span> Connect on WhatsApp
+      </button>
+    </div>
+
+    <div class="chat-options" id="chatWaOptions" hidden>
+      <p class="chat-submsg">How would you like to reach out?</p>
+      <a class="chat-btn wa" id="chatWaJoin" href="#" target="_blank" rel="noopener">Join Their Business</a>
+      <a class="chat-btn wa" id="chatWaBuy" href="#" target="_blank" rel="noopener">Purchase Items</a>
+      <button class="chat-back" id="chatBack">&larr; Back</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
