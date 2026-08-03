@@ -32,10 +32,24 @@
     });
   });
 
-  // Connect assistant modal
+  // Connect assistant modal (gated by admin approval)
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+
   const startButtons = document.querySelectorAll('.start-btn');
   const chatOverlay = document.getElementById('chatOverlay');
   const chatClose = document.getElementById('chatClose');
+
+  const gateStates = ['chatGateSignedout', 'chatGatePending', 'chatGateRejected', 'chatApproved']
+    .map(id => document.getElementById(id));
+
+  const chatBizNameA = document.getElementById('chatBizNameA');
+  const chatSigninBtn = document.getElementById('chatSigninBtn');
+  const chatGateError = document.getElementById('chatGateError');
+  const chatGateSignout = document.getElementById('chatGateSignout');
+  const chatGateSignoutRejected = document.getElementById('chatGateSignoutRejected');
+
   const chatBizName = document.getElementById('chatBizName');
   const chatYoutube = document.getElementById('chatYoutube');
   const chatInstagram = document.getElementById('chatInstagram');
@@ -46,21 +60,78 @@
   const chatWaOptions = document.getElementById('chatWaOptions');
   const chatBack = document.getElementById('chatBack');
 
-  function openChat(btn){
-    chatBizName.textContent = btn.dataset.name || 'this business';
-    chatYoutube.href = btn.dataset.youtube || '#';
-    chatInstagram.href = btn.dataset.instagram || '#';
-    chatWaJoin.href = btn.dataset.waJoin || '#';
-    chatWaBuy.href = btn.dataset.waBuy || '#';
-    chatMainOptions.hidden = false;
-    chatWaOptions.hidden = true;
-    chatOverlay.classList.add('open');
-    chatOverlay.setAttribute('aria-hidden', 'false');
+  let selectedBtn = null;
+  let unsubscribeRequest = null;
+
+  function showGateState(id) {
+    gateStates.forEach(el => el.hidden = (el.id !== id));
   }
 
-  function closeChat(){
+  function openChat(btn) {
+    selectedBtn = btn;
+    chatOverlay.classList.add('open');
+    chatOverlay.setAttribute('aria-hidden', 'false');
+    refreshGate();
+  }
+
+  function closeChat() {
     chatOverlay.classList.remove('open');
     chatOverlay.setAttribute('aria-hidden', 'true');
+    chatMainOptions.hidden = false;
+    chatWaOptions.hidden = true;
+    if (unsubscribeRequest) { unsubscribeRequest(); unsubscribeRequest = null; }
+  }
+
+  function refreshGate() {
+    if (unsubscribeRequest) { unsubscribeRequest(); unsubscribeRequest = null; }
+
+    const user = auth.currentUser;
+    if (!user) {
+      chatBizNameA.textContent = (selectedBtn && selectedBtn.dataset.name) || 'this business';
+      showGateState('chatGateSignedout');
+      return;
+    }
+
+    document.querySelectorAll('.chat-user-email').forEach(el => el.textContent = user.email);
+
+    const ref = db.collection('accessRequests').doc(user.uid);
+    unsubscribeRequest = ref.onSnapshot(async (snap) => {
+      if (!snap.exists) {
+        try {
+          await ref.set({
+            name: user.displayName || '',
+            email: user.email,
+            status: 'pending',
+            requestedAt: firebase.firestore.FieldValue.serverTimestamp()
+          });
+        } catch (err) {
+          chatGateError.textContent = 'Could not submit request: ' + err.message;
+        }
+        return; // onSnapshot will fire again once the doc exists
+      }
+      const data = snap.data();
+      if (data.status === 'approved') {
+        showApprovedOptions();
+      } else if (data.status === 'rejected') {
+        showGateState('chatGateRejected');
+      } else {
+        showGateState('chatGatePending');
+      }
+    }, (err) => {
+      chatGateError.textContent = 'Could not check access: ' + err.message;
+    });
+  }
+
+  function showApprovedOptions() {
+    if (!selectedBtn) return;
+    chatBizName.textContent = selectedBtn.dataset.name || 'this business';
+    chatYoutube.href = selectedBtn.dataset.youtube || '#';
+    chatInstagram.href = selectedBtn.dataset.instagram || '#';
+    chatWaJoin.href = selectedBtn.dataset.waJoin || '#';
+    chatWaBuy.href = selectedBtn.dataset.waBuy || '#';
+    chatMainOptions.hidden = false;
+    chatWaOptions.hidden = true;
+    showGateState('chatApproved');
   }
 
   startButtons.forEach(btn => {
@@ -70,6 +141,21 @@
   chatClose.addEventListener('click', closeChat);
   chatOverlay.addEventListener('click', (e) => {
     if (e.target === chatOverlay) closeChat();
+  });
+
+  chatSigninBtn.addEventListener('click', () => {
+    chatGateError.textContent = '';
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider).catch(err => {
+      chatGateError.textContent = 'Sign-in failed: ' + err.message;
+    });
+  });
+
+  chatGateSignout?.addEventListener('click', () => auth.signOut());
+  chatGateSignoutRejected?.addEventListener('click', () => auth.signOut());
+
+  auth.onAuthStateChanged(() => {
+    if (chatOverlay.classList.contains('open')) refreshGate();
   });
 
   chatWhatsappBtn.addEventListener('click', () => {

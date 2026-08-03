@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ComingSoonInCity — Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .admin-wrap{ max-width:820px; margin:0 auto; padding:60px 24px 100px; }
+  .admin-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:12px; }
+  .admin-title{ font-size:clamp(28px,4vw,42px); }
+  .admin-who{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--concrete); }
+  .admin-section{ margin-top:44px; }
+  .admin-section h2{ font-family:'Oswald',sans-serif; text-transform:uppercase; font-size:15px; letter-spacing:0.06em; color:var(--paper); border-bottom:1px solid var(--line); padding-bottom:10px; margin-bottom:16px; }
+  .req-row{
+    background:var(--paper); color:var(--navy-deep); padding:16px 18px;
+    display:flex; justify-content:space-between; align-items:center; gap:14px;
+    margin-bottom:10px; flex-wrap:wrap; box-shadow:4px 4px 0 rgba(0,0,0,0.3);
+  }
+  .req-info{ font-size:14px; }
+  .req-info .req-name{ font-weight:600; }
+  .req-info .req-email{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:#5c584c; }
+  .req-actions{ display:flex; gap:8px; }
+  .req-actions button{
+    font-family:'Oswald', sans-serif; text-transform:uppercase; font-size:11.5px; letter-spacing:0.05em;
+    padding:8px 14px; border:1.5px solid var(--navy-deep); background:transparent; color:var(--navy-deep);
+    cursor:pointer; font-weight:600;
+  }
+  .req-actions .approve{ background:#2E7D4F; border-color:#2E7D4F; color:#fff; }
+  .req-actions .reject{ border-color:#b3261e; color:#b3261e; }
+  .req-actions .revoke{ border-color:var(--concrete); color:var(--concrete); }
+  .empty-note{ color:var(--concrete); font-size:13.5px; font-family:'IBM Plex Mono', monospace; }
+  .admin-locked{ max-width:420px; margin:80px auto; text-align:center; }
+</style>
+</head>
+<body>
+
+<div id="adminLocked" class="admin-locked" style="display:none;">
+  <div class="permit-tag">Admin Only</div>
+  <h1 class="display" style="font-size:32px; margin:16px 0;">Not authorized.</h1>
+  <p style="color:var(--concrete); margin-bottom:20px;">Sign in with the admin Google account to manage access requests.</p>
+  <button id="adminSigninBtn" class="btn btn-primary">Sign in with Google</button>
+  <p id="adminError" style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#e08585; margin-top:14px;"></p>
+</div>
+
+<div id="adminPanel" class="admin-wrap" style="display:none;">
+  <div class="admin-header">
+    <h1 class="display admin-title">Access<br>Requests</h1>
+    <div class="admin-who">
+      Signed in as <span id="adminEmail"></span> ·
+      <button id="adminSignout" style="background:none;border:none;color:var(--orange);text-decoration:underline;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:12px;">sign out</button>
+    </div>
+  </div>
+
+  <div class="admin-section">
+    <h2>Pending</h2>
+    <div id="pendingList"><p class="empty-note">Loading…</p></div>
+  </div>
+
+  <div class="admin-section">
+    <h2>Approved</h2>
+    <div id="approvedList"><p class="empty-note">Loading…</p></div>
+  </div>
+
+  <div class="admin-section">
+    <h2>Rejected</h2>
+    <div id="rejectedList"><p class="empty-note">Loading…</p></div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="admin.js"></script>
+
+</body>
+</html>

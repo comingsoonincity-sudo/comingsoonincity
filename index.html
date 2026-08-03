@@ -181,11 +181,11 @@
       <span><span class="k">Location:</span> Ranastalam, Srikakulam</span>
     </div>
     <div class="card-cta">
-      <button class="start-btn"  data-wa-join="https://wa.me/9347965863?text=Hi%2C%20I%27d%20like%20to%20connect%20with%20Costa%20Palms%20Residency" data-wa-buy="https://wa.me/9347965863?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20properties%20from%20Costa%20Palms%20Residency">Start</button>
+      <button class="start-btn" data-name="Costa Palms Residency" data-youtube="https://youtube.com/@costapalmsresidency" data-instagram="https://instagram.com/costapalmsresidency" data-wa-join="https://wa.me/9347965863?text=Hi%2C%20I%27d%20like%20to%20connect%20with%20Costa%20Palms%20Residency" data-wa-buy="https://wa.me/9347965863?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20properties%20from%20Costa%20Palms%20Residency">Start</button>
     </div>
   </div>
 
-  <div class="card" data-cat="real-estate" data-city="Visakhapatnam">
+  <div class="card" data-cat="real-estate" data-city="vizianagaram">
     <div class="tape"></div>
     <div class="card-top"><span class="cat-tag">Real Estate</span><span class="stamp online">Online</span></div>
     <h3>Cresta Developers</h3>
@@ -194,7 +194,7 @@
       <span><span class="k">Location:</span> Vizianagaram</span>
     </div>
     <div class="card-cta">
-      <button class="start-btn" data-wa-join="https://wa.me/9347965863?text=Hi%2C%20I%27d%20like%20to%20connect%20with%20Costa%20Palms%20Residency" data-wa-buy="https://wa.me/9347965863?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20properties%20from%20Costa%20Palms%20Residency">Start</button>
+      <button class="start-btn" data-name="Cresta Developers" data-youtube="https://youtube.com/@crestadevelopers" data-instagram="https://instagram.com/crestadevelopers" data-wa-join="https://wa.me/9347965863?text=Hi%2C%20I%27d%20like%20to%20connect%20with%20Cresta%20Developers" data-wa-buy="https://wa.me/9347965863?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20properties%20from%20Cresta%20Developers">Start</button>
     </div>
   </div>
 
@@ -257,29 +257,53 @@
       <span class="chat-dot"></span>
       <span class="signage">Connect Assistant</span>
     </div>
-    <p class="chat-msg">Ready to connect with <strong id="chatBizName">this business</strong>? Pick where:</p>
 
-    <div class="chat-options" id="chatMainOptions">
-      <a class="chat-btn yt" id="chatYoutube" href="#" target="_blank" rel="noopener">
-        <span class="chat-btn-icon">▶</span> Subscribe on YouTube
-      </a>
-      <a class="chat-btn ig" id="chatInstagram" href="#" target="_blank" rel="noopener">
-        <span class="chat-btn-icon">◎</span> Follow on Instagram
-      </a>
-      <button class="chat-btn wa" id="chatWhatsappBtn">
-        <span class="chat-btn-icon">✆</span> Connect on WhatsApp
-      </button>
+    <div id="chatGateSignedout" class="chat-gate-state">
+      <p class="chat-msg">Connecting with <strong id="chatBizNameA">this business</strong> needs a quick admin approval first.</p>
+      <button id="chatSigninBtn" class="chat-btn wa" style="width:100%;">Sign in with Google to Request Access</button>
+      <p id="chatGateError" class="gate-error"></p>
     </div>
 
-    <div class="chat-options" id="chatWaOptions" hidden>
-      <p class="chat-submsg">How would you like to reach out?</p>
-      <a class="chat-btn wa" id="chatWaJoin" href="#" target="_blank" rel="noopener">Join Their Business</a>
-      <a class="chat-btn wa" id="chatWaBuy" href="#" target="_blank" rel="noopener">Purchase Items</a>
-      <button class="chat-back" id="chatBack">&larr; Back</button>
+    <div id="chatGatePending" class="chat-gate-state" hidden>
+      <p class="chat-msg">Request sent — waiting on approval for <strong class="chat-user-email"></strong>.</p>
+      <button id="chatGateSignout" class="chat-back">Sign out</button>
+    </div>
+
+    <div id="chatGateRejected" class="chat-gate-state" hidden>
+      <p class="chat-msg"><strong class="chat-user-email"></strong> hasn't been approved to connect yet.</p>
+      <button id="chatGateSignoutRejected" class="chat-back">Sign out</button>
+    </div>
+
+    <div id="chatApproved" class="chat-gate-state" hidden>
+      <p class="chat-msg">Ready to connect with <strong id="chatBizName">this business</strong>? Pick where:</p>
+
+      <div class="chat-options" id="chatMainOptions">
+        <a class="chat-btn yt" id="chatYoutube" href="#" target="_blank" rel="noopener">
+          <span class="chat-btn-icon">▶</span> Subscribe on YouTube
+        </a>
+        <a class="chat-btn ig" id="chatInstagram" href="#" target="_blank" rel="noopener">
+          <span class="chat-btn-icon">◎</span> Follow on Instagram
+        </a>
+        <button class="chat-btn wa" id="chatWhatsappBtn">
+          <span class="chat-btn-icon">✆</span> Connect on WhatsApp
+        </button>
+      </div>
+
+      <div class="chat-options" id="chatWaOptions" hidden>
+        <p class="chat-submsg">How would you like to reach out?</p>
+        <a class="chat-btn wa" id="chatWaJoin" href="#" target="_blank" rel="noopener">Join Their Business</a>
+        <a class="chat-btn wa" id="chatWaBuy" href="#" target="_blank" rel="noopener">Purchase Items</a>
+        <button class="chat-back" id="chatBack">&larr; Back</button>
+      </div>
     </div>
   </div>
 </div>
 
+<!-- Firebase (access control for the connect action) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
 <script src="script.js"></script>
 
 </body>
