@@ -6,12 +6,12 @@ service cloud.firestore {
       // A signed-in user can create their own request, and read their own status.
       allow create: if request.auth != null && request.auth.uid == userId;
       allow read: if request.auth != null &&
-                     (request.auth.uid == userId || request.auth.token.email == 'youradmin@gmail.com');
+                     (request.auth.uid == userId || request.auth.token.email == 'comingsoonincity@gmail.com');
 
       // ONLY the admin account can approve/reject/revoke — a user can never
       // change their own status field, no matter what the app's JS does.
       allow update, delete: if request.auth != null &&
-                                request.auth.token.email == 'youradmin@gmail.com';
+                                request.auth.token.email == 'comingsoonincity@gmail.com';
     }
   }
 }

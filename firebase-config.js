@@ -3,16 +3,16 @@
 // See SETUP.md for step-by-step instructions.
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyAM73VBxYMFaCUdd0SHQu7OSU4kbMBJL4k",
+  authDomain: "comingsoonincity-65a7b.firebaseapp.com",
+  projectId: "comingsoonincity-65a7b",
+  storageBucket: "comingsoonincity-65a7b.firebasestorage.app",
+  messagingSenderId: "801805033349",
+  appId: "1:801805033349:web:4a8caf90aee2dcd275aeec"
 };
 
 // The ONLY email(s) allowed to access the admin approval page (admin.html).
 // This is a convenience check in the browser, NOT real security by itself —
 // the actual enforcement happens in firestore.rules. Still, set this to your
 // real Google account email.
-const ADMIN_EMAILS = ["youradmin@gmail.com"];
+const ADMIN_EMAILS = ["comingsoonincity@gmail.com"];
